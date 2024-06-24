@@ -1,0 +1,60 @@
+Trabalho Final
+Aluno: Emerson Adam
+Disciplina: Computação em nuvem e segurança de redes
+Professor: Marcelo de Oliveira Rosa
+
+# AMBIENTE. Caso já tenha instalado, basta pular estes passos e iniciar o seu container com docker start -ai nomedocontainer
+
+#1º passo: instalar o docker toolbox: https://github.com/docker-archive/toolbox/releases/download/v19.03.1/DockerToolbox-19.03.1.exe
+#Se instalar somente o Docker Desktop não funciona, deve criar alguma dependência com a Oracle VirtualBOX, após instalar, pode remover(desinstalar) o docker toolbox.
+
+#2º passo: instalar o docker desktop: https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe
+
+#3º passo: Criar uma pasta especifica para rodar o spark, como por exemplo C:\users\Emerson\spark Entrar via CMD nesta pasta e rodar o comando abaixo. Será criado um container com 2 threads de seu CPU.
+docker run -ti --name emerson-spark -v .:/opt/spark/work-dir -p 4040:4040 spark /opt/spark/bin/spark-shell --master local[2]
+
+#4º passo: baixar os arquivos para análise do trabalho final http://www.labsom.ct.utfpr.edu.br/mrosa/computacao-nuvem-seguranca-redes/trabalho-final/dataset.zip e extraí-los na pasta criada anteriormente C:\users\Emerson\spark
+
+#Agora é seguir os tópicos abaixo, copiando linha a linha e jogando no sehll do Spark
+
+#importar biblioteca para definir schema
+import org.apache.spark.sql.types._
+
+#definir schema para leitura das medidas posteriormente, facilitando a leitura das colunas
+
+val schema = StructType(Array(StructField("cod_copel", StringType, nullable = true), StructField("contador", StringType, nullable = true), StructField("date_time", StringType, nullable = true), StructField("empresa", StringType, nullable = true), StructField("id_smart", StringType, nullable = true), StructField("medida_1", DecimalType(10, 2), nullable = true), StructField("medida_2", DecimalType(10, 2), nullable = true), StructField("medida_3", DecimalType(10, 2), nullable = true), StructField("medida_4", DecimalType(10, 2), nullable = true), StructField("medida_5", DecimalType(10, 2), nullable = true), StructField("medida_6", DecimalType(10, 2), nullable = true), StructField("medida_7", DecimalType(10, 2), nullable = true), StructField("medida_8", DecimalType(10, 2), nullable = true), StructField("medida_9", DecimalType(10, 2), nullable = true), StructField("medida_10", DecimalType(10, 2), nullable = true), StructField("medida_11", DecimalType(10, 2), nullable = true), StructField("medida_12", DecimalType(10, 2), nullable = true), StructField("medida_13", DecimalType(10, 2), nullable = true), StructField("medida_14", DecimalType(10, 2), nullable = true), StructField("medida_15", DecimalType(10, 2), nullable = true), StructField("medida_16", DecimalType(10, 2), nullable = true), StructField("medida_17", DecimalType(10, 2), nullable = true), StructField("medida_18", DecimalType(10, 2), nullable = true), StructField("medida_19", DecimalType(10, 2), nullable = true), StructField("hash", StringType, nullable = true)))
+
+#Lendo as os arquivos e criando variaveis
+val c0 = "consumption_0.txt"
+val c1 = "consumption_1.txt"
+val c2 = "consumption_2.txt"
+val c3 = "consumption_3.txt"
+
+#Criando os dataframes
+val df0 = spark.read.option("header", "false").option("delimiter", ";").schema(schema).csv(c0)
+val df1 = spark.read.option("header", "false").option("delimiter", ";").schema(schema).csv(c1)
+val df2 = spark.read.option("header", "false").option("delimiter", ";").schema(schema).csv(c2)
+val df3 = spark.read.option("header", "false").option("delimiter", ";").schema(schema).csv(c3)
+
+#Unificando os Dfs
+val dfUnificado = df0.union(df1).union(df2).union(df3)
+
+#Pergunta 1:  Consolidar o consumo total, gerando a soma das medidas 14, 16 e 17 separadamente.
+val consumoTotal = dfUnificado.agg(sum(col("medida_14")).as("consumo_total_medida_14"),sum(col("medida_16")).as("consumo_total_medida_16"),sum(col("medida_17")).as("consumo_total_medida_17"))
+consumoTotal.show()
+
+# Pergunta 2 Consolidar o consumo POR CLIENTE, gerando a soma dos campos 14, 16 e 17
+separadamente para cada uma das empresas/clientes.
+
+val consumoPorCliente = dfUnificado.groupBy("empresa").agg(sum(col("medida_14")).as("consumo_por_cliente_medida_14"), sum(col("medida_16")).as("consumo_por_cliente_medida_16"), sum(col("medida_17")).as("consumo_por_cliente_medida_17"))
+
+#ordenando de forma ascendente a empresa 
+val consumoPorClienteOrdenado = consumoPorCliente.orderBy("empresa")
+
+#mostrando em tela tabela com os dados de consumo
+consumoPorClienteOrdenado.show()
+
+
+#No pacote .zip contém as imagens das respostas.
+#Obrigado.
+#Emerson Adam
