@@ -1,0 +1,109 @@
+---
+title: "Exercício 9 - Emerson Adam"
+output: html_document
+date: "2023-04-09"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(survival)
+require(survminer)
+require(dplyr)
+require(bootswatch)
+dados <-  lung %>%
+  dplyr::select(time, status, age, sex) %>%
+  dplyr::mutate(sex_cat = factor(dplyr::case_when(sex == 1 ~ 'Homens',
+                                        sex == 2 ~'Mulheres')),
+                status_adj = dplyr::recode(status, `1` = 0,
+                                          `2` = 1))
+km <- survival::survfit(formula = Surv(time, status_adj) ~1, data=dados)
+table(dados$sex_cat)
+km_sex <-  survival::survfit(formula = Surv(time, status_adj) ~sex_cat, data=dados)
+log_rank <- survival:: survdiff(formula = Surv(time, status_adj) ~sex_cat, data=dados)
+m_cox <- survival::coxph(formula = Surv(time, status_adj) ~sex_cat + age, data=dados)
+```
+
+# Análise do Dataset Lung
+
+Este aqruivo mostra a análise estatística da database LUNG do NCCTG(North Central Cancer Treatment Group), que demonstra dados de pacientes com câncer de pulmão em estágio avançado.
+
+Este dataset contém 228 linhas(registros) e 10 colunas (variáveis). Algumas variaveis de exemplo como tempo de sobrevivência, sexo, peso e calorias ingeridas. 
+Neste estudo iremos utilizar somente idade e sexo para identificar fatores de risco relacionados ao óbito do paciente.
+
+Nota-se que o tempo médio de vida é de 310 dias.
+```{r dados}
+km
+```
+
+## Etapa exploratória do dataset
+
+
+Iremos utilizar o método Kaplan Meier neste estudo, pois é o mais indicado para análise não paramétrica para estimar a taxa/função de sobrevivência a partir de dados de vida.
+
+No gráfico abaixo vemos que há queda brusca na taxa de sobrevivência a partir de 180 dias.
+
+```{r km, echo=FALSE}
+plot(km, xlab = "Dias de sobrevivencia", ylab= "Probabilidade de sobrevivência" )
+```
+
+Ao verificarmos a proporção entre homens e mulheres que vieram a obito neste dataset, encontramos que 68% dos registros são homens e 32% são mulheres. Logo espera-se uma taxa de obito maior para homens. 
+
+```{r table_sexcat, echo=FALSE}
+prop.table(table(dados$sex_cat, dados$status_adj), margin=2)
+```
+1 = obito 0 = censurado
+
+## Teste de Hipótese
+#H0 a taxa de sobrevivência entre H e M é = \
+#H1 a taxa de sobrevivência entre H e M é !=
+
+Ao olharmos o tempo de sobrevivência em um ano, separando os sexos, temos que a taxa de sobrevivência das mulheres é maior do que a dos homens, sendo 53% e 34% respectivamente.
+```{r table_t_sex, echo=FALSE}
+summary(km_sex, times = 365)
+```
+
+Colocando isto em um grafico, fica ainda mais evidente que a taxa de sobrevivência das mulheres é maior do que a dos homens. Logo podemos rejeitar h0 sendo que a taxa entre os 2 grupos é diferente
+```{r plot_km_sex, echo=FALSE}
+plot(km_sex, conf.int = FALSE,
+     xlab = "Dias de sobreviência",
+     ylab = "Taxa de sobrevivência",
+     lty = c(1,2))
+  legend(legend = c('H','M'),
+         lty = c(1,2),
+         x = "topright",
+         bty = 'n')#sem contorno
+```
+
+
+Ao realizarmos o teste de Log-Rank, temos um valor de p menor que 0,05 e que podemos rejeitar h0, ou seja, a taxa de sobrevivência é diferente entre os 2 grupos.
+```{r logrank_sex_time, echo=FALSE}
+log_rank
+```
+
+
+## Ajuste do modelo
+Nesta etapa, iremos ajustar o modelo avaliando os fatores de risco relacionados ao óbito. Neste estudo iremos usar somente a idade e sexo, porém outros fatores como peso e calorias ingeridas poderiam ser avaliadas.
+
+Ao utilizarmos o modelo de Cox para explicarmos o tempo de sobrevivencia em função de idade e sexo, temos o seguinte resultado;
+
+1. O aumento de 1 ano de idade aumenta o risco de morte em 2\
+2.O sexo feminino possuem um risco 40% (1-0,6) menor quando comparamos com pacientes masculinos
+```{r m_cox, echo=FALSE}
+summary(m_cox)
+```
+
+Precisamos agora validar o modelo, garantindo que ele está correto e que podemos confiar nos dados, ou seja, o modelo nao viola os pressupostos de validação do método 
+
+No grafico abaixo, nota-se que os dados estão dentro da faixa de confiança, indicando que o modelo está bem ajustado.
+
+```{r plot_residuals, echo=FALSE}
+survminer::ggcoxzph(survival::cox.zph(m_cox))
+```
+
+E por último um resumo do modelo, onde esperamos encontrar um valor de concordância maior que 0.6. Então temos um valor de concordância do modelo de 0.63, o que indica que o modelo está correto.
+```{r sum_mcox, echo=FALSE}
+summary(m_cox)
+```
+
+
+## Portanto é valido e correto dizer que a taxa de sobrevivência entre os grupos é diferente, sendo que a maior taxa é do grupo das mulheres.

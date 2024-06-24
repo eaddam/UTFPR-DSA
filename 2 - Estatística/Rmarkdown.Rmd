@@ -1,0 +1,31 @@
+---
+title: "R Markdown do Exercício 9 - Emerson Adam"
+output:
+  html_document: default
+  pdf_document: default
+date: "2023-04-06"
+---
+
+```{r setup, include=FALSE}
+require(survival)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Análise do Dataset Lung
+
+Este aqruivo mostra a análise estatística da database LUNG do NCCTG, que demonstra dados de pacientes com câncer de pulmão em estágio avançado.
+
+Este dataset contém 
+```{r dados}
+summary(dados)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

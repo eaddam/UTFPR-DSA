@@ -1,0 +1,60 @@
+% Student exercise profile
+:- set_prolog_flag(occurs_check, error).        % disallow cyclic terms
+:- set_prolog_stack(global, limit(8 000 000)).  % limit term space (8Mb)
+:- set_prolog_stack(local,  limit(2 000 000)).  % limit environment space
+
+%Aluno Emerson Adam
+%Fatos de acordo com a tarefa.
+
+autor(jose_de_alencar).
+autor(isaac_asimov).
+autor(aguinaldo_silva).
+autor(silvio_de_abreu).
+
+livro(senhora).
+livro(iracema).
+livro(eu_robo).
+
+novela(tieta).
+novela(passione).
+
+nacionalidade(brasileira).
+nacionalidade(inglesa).
+
+escreve(jose_de_alencar, senhora).
+escreve(jose_de_alencar, iracema).
+escreve(isaac_asimov, eu_robo).
+escreve(aguinaldo_silva, tieta).
+escreve(silvio_de_abreu, passione).
+escreve(isaac_asimov, iracema). %teste livro com mais de um autor
+
+nacionalidade_escritor(jose_de_alencar, brasileira).
+nacionalidade_escritor(aguinaldo_silva, brasileira).
+nacionalidade_escritor(silvio_de_abreu, brasileira).
+nacionalidade_escritor(isaac_asimov, inglesa).
+
+
+%Perguntas do exercicio
+
+% a) Quais os autores da mesma nacionalidade que escrevem novelas? 
+
+%usando findnsols https://www.swi-prolog.org/pldoc/doc_for?object=findnsols/4
+%% findnsols(4,X, (escreve(X,Y), novela(Y), (nacionalidade_escritor(X,brasileira);nacionalidade_escritor(X,inglesa))), Autores_Novelas_Nacionalidade).
+% numero 4 pois existem 4 autores nos fatos
+
+% b) Quais os livros escritos por mais de um autor? 
+%% findnsols(3,Y,(distinct([Y], (autor(X), escreve(X, Y),escreve(Z, Y),livro(Y), X\=Z))), Livros_com_mais_de_um_autor)
+%% nao há livros escritos por mais de um autor
+%% numero 3 pois existem 3 livros nos fatos
+
+% c) Quais os autores que escrevem mais de um livro?
+%% findnsols(4,X,(distinct([X], (autor(X),escreve(X, Z),escreve(X, Y),livro(Y), Y\=Z))),Autores_com_mais_de_um_livro)
+%% numero 4 pois existem somente 4 autores nos fatos
+
+% d) Quais os livros escritos por José de Alencar?
+%% findnsols(3, Y, (livro(Y), escreve(jose_de_alencar,Y)), Livros_Jose_de_Alencar)
+%% numero 3 pois existem 3 livros nos fatos
+
+% e) Quais os livros escritos por autores brasileiros? 
+%% findnsols(3,Y, (escreve(X,Y), nacionalidade_escritor(X, brasileira), livro(Y)), Livros_Autores_Brasileiros)
+%% numero 4 pois existem somente 4 autores nos fatos
