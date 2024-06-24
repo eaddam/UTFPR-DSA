@@ -1,0 +1,55 @@
+Criando tabela
+CREATE TABLE public.especializacao_emerson_adam_tabela (
+alvara integer NOT NULL, -- Número do Alvará
+nome_empresarial varchar(255) NOT NULL, -- Nome Empresarial
+inicio_atividade timestamp, -- Data de Início da Atividade
+nome_da_empresa varchar(255), -- Nome da Empresa
+data_emissao timestamp, -- Data de Emissão
+data_expiracao timestamp, -- Data de Expiração
+atv_principal varchar(255) NOT NULL, -- Atividade Principal
+atv_secundaria1 varchar(255), -- Atividade Secundária 1
+atv_secundaria2 varchar(255), -- Atividade Secundária 2
+endereco varchar(255), -- Endereço
+numero integer, -- Número
+unidade varchar(20), -- Unidade
+andar varchar(4), -- Andar
+complemento varchar(255), -- Complemento
+bairro varchar(255), -- Bairro
+cep varchar(10), -- CEP
+cnae_atv_principal varchar(10), -- CNAE da Atividade Principal
+cnae_atv_secundaria1 varchar(10), -- CNAE da Atividade Secundária 1
+cnae_atv_secundaria2 varchar(10), -- CNAE da Atividade Secundária 2
+PRIMARY KEY (alvara, nome_empresarial, atv_principal)
+);
+
+Inserindo valores
+INSERT INTO public.especializacao_emerson_adam_tabela (
+alvara,
+nome_empresarial,
+inicio_atividade,
+nome_da_empresa,
+data_emissao,
+data_expiracao,
+atv_principal,
+atv_secundaria1,
+atv_secundaria2,
+endereco,
+numero,
+unidade,
+andar,
+complemento,
+bairro,
+cep,
+cnae_atv_principal,
+cnae_atv_secundaria1,
+cnae_atv_secundaria2
+) VALUES
+(12345, 'Minha Empresa 1', '2023-09-10', 'Empresa XYZ', '2023-09-11', '2024-09-11', 'Atividade A', 'Atividade B', 'Atividade C', '123 Rua Principal 1', 789, 'Sala 101', '2º', 'Apto 202', 'Bairro Central', '82.560-440', 'CNAE001', 'CNAE002', 'CNAE003'),
+(67890, 'Minha Empresa 2', '2022-08-20', 'Empresa ABC', '2022-08-21', '2023-08-21', 'Atividade X', 'Atividade Y', 'Atividade Z', '456 Rua Principal 2', 567, 'Sala 102', '3º', 'Apto 203', 'Bairro Central', '54.321-987', 'CNAE004', 'CNAE005', 'CNAE006'),
+(98765, 'Minha Empresa 3', '2021-07-15', 'Empresa DEF', '2021-07-16', '2022-07-16', 'Atividade M', 'Atividade N', 'Atividade O', '789 Rua Principal 3', 456, 'Sala 103', '4º', 'Apto 204', 'Bairro Central', '67.890-123', 'CNAE007', 'CNAE008', 'CNAE009');
+
+Testando select
+select * from public.especializacao_emerson_adam_tabela
+12345;"Minha Empresa 1";"2023-09-10 00:00:00";"Empresa XYZ";"2023-09-11 00:00:00";"2024-09-11 00:00:00";"Atividade A";"Atividade B";"Atividade C";"123 Rua Principal 1";789;"Sala 101";"2º";"Apto 202";"Bairro Central";"82.560-440";"CNAE001";"CNAE002";"CNAE003"
+67890;"Minha Empresa 2";"2022-08-20 00:00:00";"Empresa ABC";"2022-08-21 00:00:00";"2023-08-21 00:00:00";"Atividade X";"Atividade Y";"Atividade Z";"456 Rua Principal 2";567;"Sala 102";"3º";"Apto 203";"Bairro Central";"54.321-987";"CNAE004";"CNAE005";"CNAE006"
+98765;"Minha Empresa 3";"2021-07-15 00:00:00";"Empresa DEF";"2021-07-16 00:00:00";"2022-07-16 00:00:00";"Atividade M";"Atividade N";"Atividade O";"789 Rua Principal 3";456;"Sala 103";"4º";"Apto 204";"Bairro Central";"67.890-123";"CNAE007";"CNAE008";"CNAE009"

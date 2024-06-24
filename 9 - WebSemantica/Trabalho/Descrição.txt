@@ -1,0 +1,28 @@
+Aluno: Emerson Adam
+Curso de Especialização em Ciência de Dados - UTFPR
+Disciplina Dados Conectados e Web Semântica
+Profª Rita Cristina Galarraga Berardi.
+
+Opção de trabalho #2
+
+Criei uma ontologia com base nos personagens do seriado Simpsons. Utilizei Classes, propriedades de objeto e de dados, também como dominio, range e as restrições. 
+Utilizei o Reasoner Pellet para replicar as propriedades.
+Como o seriado é extenso, utilizei somente alguns poucos personagens que permitiram a interação, como chefe, animal de estimação, filhos, pais, irmaos e amigos.
+
+Anexo também constam as consultas sparql no próprio Protegé, em formato .png além do TXT contendo as 3 perguntas em sparql no DBPedia.
+As perguntas no Protegé são:
+1- Quais personagens são amigos?
+2- Quais personagens são amigos de trabalho e são empregados do Mr Burns?
+3- Quais personagens possuem relação de pais e filhos?
+4- Quais personagens são irmãos?
+5- Quais personagens são do sexo masculino?
+
+As 3 perguntas no DBPedia são:
+1- Qual a soma total das áreas em km² de todos os estádios da base? "SUM"
+2- Selecionar até 100 pessoas que são identificadas como cientistas ou escritores na DBpedia. "UNION"
+3- Selecionar nomes únicos de atores que estrelaram em filmes com o título "Cidade de Deus" "ORDER BY"
+
+Profª. acredito que consegui demonstrar meu conhecimento, mas confesso que poderia um pouco mais nesta matéria, porém alguns problemas profissionais(troquei de emprego) e pessoais(mãe hospitalizada) que me tiraram um pouco a concentração.
+
+Por fim, agradeço a oportunidade, nunca havia visto antes e achei muito interessante.
+Obrigado.

@@ -1,0 +1,35 @@
+Todas as consultas foram feitas no endereço https://dbpedia.org/sparql usando o default dataset http://dbpedia.org
+
+
+#1 - Qual a soma total das áreas em km² de todos os estádios da base?
+SELECT (SUM(?stadiumArea/1000.0) AS ?totalStadiumAreaInKm2)  
+WHERE {
+  ?stadium rdf:type dbo:Stadium .  # Seleciona instâncias que são estádios
+  ?stadium dbo:areaTotal ?stadiumArea .  # Recupera a área total de cada estádio 
+}
+
+
+#2 - Selecionar até 100 pessoas que são identificadas como cientistas ou escritores na DBpedia.
+PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>  
+PREFIX dct: <http://purl.org/dc/terms/>             
+
+SELECT DISTINCT ?person {                           # Selecionar pessoas distintas
+    { ?person rdf:type dbpedia-owl:Scientist }      # Pessoas que são cientistas
+    UNION                                           # Operador UNION para combinar padrões
+    { ?person rdf:type dbpedia-owl:Writer }         # Pessoas que são escritores
+} LIMIT 100                                         # Limitar o número de resultados para 100
+
+
+#3 - Selecionar nomes únicos de atores que estrelaram em filmes com o título "Cidade de Deus"
+SELECT DISTINCT ?actor_name
+WHERE {
+  ?film rdf:type dbo:Film .               # Filmes do tipo dbo:Film
+  ?film rdfs:label ?film_name .           # Rótulos (títulos) dos filmes
+  ?film dbo:starring ?actor .             # Relacionamento dbo:starring para obter informações sobre os atores nos filmes
+  ?actor rdfs:label ?actor_name .         # Rótulos (nomes) dos atores
+
+  FILTER regex(?film_name, "Cidade de Deus") .               # Filtrar filmes com o título "Cidade de Deus"
+  FILTER (lang(?film_name)='pt' || lang(?film_name)='en') .  # Filtrar para incluir apenas filmes em portugues ('pt') ou ingles ('en')
+  FILTER (lang(?actor_name)='pt' || lang(?actor_name)='en') .# Filtrar para incluir apenas nomes de atores em portugues ('pt') ou ingles ('en')
+} 
+ORDER BY DESC(?actor_name)   # Ordenar os resultados em ordem descendente com base nos nomes dos atores

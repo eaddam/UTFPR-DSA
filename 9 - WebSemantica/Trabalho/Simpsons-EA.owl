@@ -1,0 +1,706 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/emers/ontologies/2023/10/simpsons-ea"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="http://www.semanticweb.org/emers/ontologies/2023/10/simpsons-ea">
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Animal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Feminino"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Humano"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Masculino"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#conjuge"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#temDono"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#temFilho"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#temIrmao"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#temMae"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#temPai"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#temPais"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#éAluno"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#éAmigo"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#éChefe"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#éDono"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#éEmpregado"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#éProfessor"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#idade"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Abe_Simpson"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Ajudante_de_Papai_Noel"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Barney_Gumble"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Bart_Simpson"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Bola_de_Neve"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Homer_Simpson"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Lisa_Simpson"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Maggie_Simpson"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Marge_Simpson"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Milhouse_Van_Houten"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Montgomery_Burns"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Ned_Flanders"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Porco_Aranha"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Rod_Flanders"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Seymour_Skinner"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Todd_Flanders"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Feminino"/>
+        <Class IRI="#Humano"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Humano"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#temMae"/>
+            <Class IRI="#Feminino"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Humano"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#temPai"/>
+            <Class IRI="#Masculino"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Masculino"/>
+        <Class IRI="#Humano"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Animal"/>
+        <Class IRI="#Humano"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Feminino"/>
+        <Class IRI="#Masculino"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#Humano"/>
+        <NamedIndividual IRI="#Abe_Simpson"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Masculino"/>
+        <NamedIndividual IRI="#Abe_Simpson"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Animal"/>
+        <NamedIndividual IRI="#Ajudante_de_Papai_Noel"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Humano"/>
+        <NamedIndividual IRI="#Barney_Gumble"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Masculino"/>
+        <NamedIndividual IRI="#Barney_Gumble"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Humano"/>
+        <NamedIndividual IRI="#Bart_Simpson"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Masculino"/>
+        <NamedIndividual IRI="#Bart_Simpson"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Animal"/>
+        <NamedIndividual IRI="#Bola_de_Neve"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Humano"/>
+        <NamedIndividual IRI="#Homer_Simpson"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Masculino"/>
+        <NamedIndividual IRI="#Homer_Simpson"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Feminino"/>
+        <NamedIndividual IRI="#Lisa_Simpson"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Humano"/>
+        <NamedIndividual IRI="#Lisa_Simpson"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Feminino"/>
+        <NamedIndividual IRI="#Maggie_Simpson"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Humano"/>
+        <NamedIndividual IRI="#Maggie_Simpson"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Feminino"/>
+        <NamedIndividual IRI="#Marge_Simpson"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Humano"/>
+        <NamedIndividual IRI="#Marge_Simpson"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Humano"/>
+        <NamedIndividual IRI="#Milhouse_Van_Houten"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Masculino"/>
+        <NamedIndividual IRI="#Milhouse_Van_Houten"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Humano"/>
+        <NamedIndividual IRI="#Montgomery_Burns"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Masculino"/>
+        <NamedIndividual IRI="#Montgomery_Burns"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Humano"/>
+        <NamedIndividual IRI="#Ned_Flanders"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Masculino"/>
+        <NamedIndividual IRI="#Ned_Flanders"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Animal"/>
+        <NamedIndividual IRI="#Porco_Aranha"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Humano"/>
+        <NamedIndividual IRI="#Rod_Flanders"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Masculino"/>
+        <NamedIndividual IRI="#Rod_Flanders"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Humano"/>
+        <NamedIndividual IRI="#Seymour_Skinner"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Masculino"/>
+        <NamedIndividual IRI="#Seymour_Skinner"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Humano"/>
+        <NamedIndividual IRI="#Todd_Flanders"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Masculino"/>
+        <NamedIndividual IRI="#Todd_Flanders"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temFilho"/>
+        <NamedIndividual IRI="#Abe_Simpson"/>
+        <NamedIndividual IRI="#Homer_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temDono"/>
+        <NamedIndividual IRI="#Ajudante_de_Papai_Noel"/>
+        <NamedIndividual IRI="#Bart_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temDono"/>
+        <NamedIndividual IRI="#Ajudante_de_Papai_Noel"/>
+        <NamedIndividual IRI="#Maggie_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temDono"/>
+        <NamedIndividual IRI="#Ajudante_de_Papai_Noel"/>
+        <NamedIndividual IRI="#Lisa_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temDono"/>
+        <NamedIndividual IRI="#Ajudante_de_Papai_Noel"/>
+        <NamedIndividual IRI="#Homer_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temDono"/>
+        <NamedIndividual IRI="#Ajudante_de_Papai_Noel"/>
+        <NamedIndividual IRI="#Marge_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#éAmigo"/>
+        <NamedIndividual IRI="#Barney_Gumble"/>
+        <NamedIndividual IRI="#Homer_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#éAmigo"/>
+        <NamedIndividual IRI="#Bart_Simpson"/>
+        <NamedIndividual IRI="#Todd_Flanders"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#éAmigo"/>
+        <NamedIndividual IRI="#Bart_Simpson"/>
+        <NamedIndividual IRI="#Rod_Flanders"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temDono"/>
+        <NamedIndividual IRI="#Bola_de_Neve"/>
+        <NamedIndividual IRI="#Bart_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temDono"/>
+        <NamedIndividual IRI="#Bola_de_Neve"/>
+        <NamedIndividual IRI="#Marge_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temDono"/>
+        <NamedIndividual IRI="#Bola_de_Neve"/>
+        <NamedIndividual IRI="#Homer_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temDono"/>
+        <NamedIndividual IRI="#Bola_de_Neve"/>
+        <NamedIndividual IRI="#Maggie_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temDono"/>
+        <NamedIndividual IRI="#Bola_de_Neve"/>
+        <NamedIndividual IRI="#Lisa_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temFilho"/>
+        <NamedIndividual IRI="#Homer_Simpson"/>
+        <NamedIndividual IRI="#Maggie_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temFilho"/>
+        <NamedIndividual IRI="#Homer_Simpson"/>
+        <NamedIndividual IRI="#Lisa_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temFilho"/>
+        <NamedIndividual IRI="#Homer_Simpson"/>
+        <NamedIndividual IRI="#Bart_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#éEmpregado"/>
+        <NamedIndividual IRI="#Homer_Simpson"/>
+        <NamedIndividual IRI="#Montgomery_Burns"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temIrmao"/>
+        <NamedIndividual IRI="#Lisa_Simpson"/>
+        <NamedIndividual IRI="#Bart_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temIrmao"/>
+        <NamedIndividual IRI="#Maggie_Simpson"/>
+        <NamedIndividual IRI="#Bart_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#conjuge"/>
+        <NamedIndividual IRI="#Marge_Simpson"/>
+        <NamedIndividual IRI="#Homer_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temFilho"/>
+        <NamedIndividual IRI="#Marge_Simpson"/>
+        <NamedIndividual IRI="#Bart_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temFilho"/>
+        <NamedIndividual IRI="#Marge_Simpson"/>
+        <NamedIndividual IRI="#Lisa_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temFilho"/>
+        <NamedIndividual IRI="#Marge_Simpson"/>
+        <NamedIndividual IRI="#Maggie_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#éAmigo"/>
+        <NamedIndividual IRI="#Milhouse_Van_Houten"/>
+        <NamedIndividual IRI="#Bart_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#éAmigo"/>
+        <NamedIndividual IRI="#Ned_Flanders"/>
+        <NamedIndividual IRI="#Homer_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temDono"/>
+        <NamedIndividual IRI="#Porco_Aranha"/>
+        <NamedIndividual IRI="#Homer_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temDono"/>
+        <NamedIndividual IRI="#Porco_Aranha"/>
+        <NamedIndividual IRI="#Maggie_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temDono"/>
+        <NamedIndividual IRI="#Porco_Aranha"/>
+        <NamedIndividual IRI="#Lisa_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temDono"/>
+        <NamedIndividual IRI="#Porco_Aranha"/>
+        <NamedIndividual IRI="#Marge_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#temDono"/>
+        <NamedIndividual IRI="#Porco_Aranha"/>
+        <NamedIndividual IRI="#Bart_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#éProfessor"/>
+        <NamedIndividual IRI="#Seymour_Skinner"/>
+        <NamedIndividual IRI="#Rod_Flanders"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#éProfessor"/>
+        <NamedIndividual IRI="#Seymour_Skinner"/>
+        <NamedIndividual IRI="#Milhouse_Van_Houten"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#éProfessor"/>
+        <NamedIndividual IRI="#Seymour_Skinner"/>
+        <NamedIndividual IRI="#Bart_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#éProfessor"/>
+        <NamedIndividual IRI="#Seymour_Skinner"/>
+        <NamedIndividual IRI="#Maggie_Simpson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#éProfessor"/>
+        <NamedIndividual IRI="#Seymour_Skinner"/>
+        <NamedIndividual IRI="#Todd_Flanders"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#éProfessor"/>
+        <NamedIndividual IRI="#Seymour_Skinner"/>
+        <NamedIndividual IRI="#Lisa_Simpson"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idade"/>
+        <NamedIndividual IRI="#Abe_Simpson"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">85</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idade"/>
+        <NamedIndividual IRI="#Barney_Gumble"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">44</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idade"/>
+        <NamedIndividual IRI="#Bart_Simpson"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idade"/>
+        <NamedIndividual IRI="#Homer_Simpson"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">45</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idade"/>
+        <NamedIndividual IRI="#Lisa_Simpson"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idade"/>
+        <NamedIndividual IRI="#Maggie_Simpson"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idade"/>
+        <NamedIndividual IRI="#Marge_Simpson"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">41</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idade"/>
+        <NamedIndividual IRI="#Milhouse_Van_Houten"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idade"/>
+        <NamedIndividual IRI="#Montgomery_Burns"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">100</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idade"/>
+        <NamedIndividual IRI="#Ned_Flanders"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">46</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idade"/>
+        <NamedIndividual IRI="#Rod_Flanders"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idade"/>
+        <NamedIndividual IRI="#Seymour_Skinner"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">45</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idade"/>
+        <NamedIndividual IRI="#Todd_Flanders"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">6</Literal>
+    </DataPropertyAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#temDono"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#temFilho"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#temMae"/>
+        <ObjectProperty IRI="#temPais"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#temPai"/>
+        <ObjectProperty IRI="#temPais"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#temPais"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#éAluno"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#éProfessor"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#temDono"/>
+        <ObjectProperty IRI="#éDono"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#temFilho"/>
+        <ObjectProperty IRI="#temPais"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#temIrmao"/>
+        <ObjectProperty IRI="#temIrmao"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#éProfessor"/>
+        <ObjectProperty IRI="#éAluno"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#éChefe"/>
+        <ObjectProperty IRI="#éEmpregado"/>
+    </InverseObjectProperties>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#temDono"/>
+    </InverseFunctionalObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#conjuge"/>
+    </SymmetricObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#temIrmao"/>
+    </SymmetricObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#éAmigo"/>
+    </SymmetricObjectProperty>
+    <AsymmetricObjectProperty>
+        <ObjectProperty IRI="#temDono"/>
+    </AsymmetricObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#temIrmao"/>
+    </TransitiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#temMae"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#temPai"/>
+    </IrreflexiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#conjuge"/>
+        <Class IRI="#Humano"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#temDono"/>
+        <Class IRI="#Animal"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#temFilho"/>
+        <Class IRI="#Humano"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#temIrmao"/>
+        <Class IRI="#Humano"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#temMae"/>
+        <Class IRI="#Humano"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#temPai"/>
+        <Class IRI="#Humano"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#temPais"/>
+        <Class IRI="#Humano"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#éAmigo"/>
+        <Class IRI="#Humano"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#éChefe"/>
+        <Class IRI="#Humano"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#éDono"/>
+        <Class IRI="#Humano"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#éEmpregado"/>
+        <Class IRI="#Humano"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#éProfessor"/>
+        <Class IRI="#Humano"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#conjuge"/>
+        <Class IRI="#Humano"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#temDono"/>
+        <Class IRI="#Humano"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#temFilho"/>
+        <Class IRI="#Humano"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#temIrmao"/>
+        <Class IRI="#Humano"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#temMae"/>
+        <Class IRI="#Feminino"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#temPai"/>
+        <Class IRI="#Masculino"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#temPais"/>
+        <Class IRI="#Humano"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#éAmigo"/>
+        <Class IRI="#Humano"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#éChefe"/>
+        <Class IRI="#Humano"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#éDono"/>
+        <Class IRI="#Animal"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#éEmpregado"/>
+        <Class IRI="#Humano"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#éProfessor"/>
+        <Class IRI="#Humano"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#idade"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="#idade"/>
+        <Class IRI="#Humano"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#idade"/>
+        <Datatype abbreviatedIRI="rdfs:Literal"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
